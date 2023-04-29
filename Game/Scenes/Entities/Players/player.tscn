@@ -1,5 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://de7ejq00742e3"]
+[gd_scene load_steps=3 format=3 uid="uid://de7ejq00742e3"]
 
 [ext_resource type="PackedScene" uid="uid://brwl3bo0p4cyu" path="res://Game/Scenes/Entities/entity.tscn" id="1_hjgly"]
+[ext_resource type="PackedScene" uid="uid://baaaqqrqgfjxi" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PlayerMovementStates/player_movement_state.tscn" id="2_bevlh"]
 
 [node name="Player" instance=ExtResource("1_hjgly")]
+
+[node name="PlayerMovementState" parent="States" index="0" instance=ExtResource("2_bevlh")]
