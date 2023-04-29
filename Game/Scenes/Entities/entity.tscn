@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://brwl3bo0p4cyu"]
+
+[ext_resource type="Script" path="res://Game/Scenes/Entities/entity.gd" id="1_cvmy2"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/Controllers/entity_controllers.gd" id="2_10ekc"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/States/entity_states.gd" id="3_omhst"]
+
+[node name="Entity" type="Node2D"]
+script = ExtResource("1_cvmy2")
+
+[node name="Controllers" type="Node" parent="."]
+script = ExtResource("2_10ekc")
+
+[node name="States" type="Node" parent="."]
+script = ExtResource("3_omhst")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://batbvm4dwbamr"]
+
+[ext_resource type="Script" path="res://Game/Scenes/Entities/States/entity_state.gd" id="1_ox24j"]
+
+[node name="EntityState" type="Node"]
+script = ExtResource("1_ox24j")
