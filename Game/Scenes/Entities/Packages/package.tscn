@@ -1,10 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://csk416nr00yni"]
+[gd_scene load_steps=8 format=3 uid="uid://csk416nr00yni"]
 
 [ext_resource type="PackedScene" uid="uid://brwl3bo0p4cyu" path="res://Game/Scenes/Entities/entity.tscn" id="1_dopxw"]
+[ext_resource type="PackedScene" uid="uid://cblfi7710bg4d" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PackagePhysicsStates/PackageThrownStates/package_thrown_state.tscn" id="2_1rrr4"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/Packages/package.gd" id="2_lfacl"]
 [ext_resource type="Texture2D" uid="uid://dx5546um5d431" path="res://Game/Scenes/Debug/Solid.png" id="2_sulqr"]
+[ext_resource type="PackedScene" uid="uid://1jxk6vkisogd" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PackagePhysicsStates/PackageLandedStates/package_landed_state.tscn" id="3_120at"]
+[ext_resource type="Texture2D" uid="uid://dqdqhwfwgy2rw" path="res://Game/Scenes/Debug/Outline.png" id="4_8akwv"]
+[ext_resource type="PackedScene" uid="uid://cfxxpqlhbehld" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PackagePhysicsStates/PackagePickedUpStates/package_picked_up_state.tscn" id="5_1cvpn"]
 
 [node name="Package" instance=ExtResource("1_dopxw")]
+script = ExtResource("2_lfacl")
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprites" index="0"]
+[node name="PackageThrownState" parent="States" index="0" instance=ExtResource("2_1rrr4")]
+
+[node name="PackageLandedState" parent="States" index="1" instance=ExtResource("3_120at")]
+
+[node name="PackagePickedUpState" parent="States" index="2" instance=ExtResource("5_1cvpn")]
+
+[node name="Shadow" type="Sprite2D" parent="Sprites" index="0"]
+position = Vector2(1, -1)
+scale = Vector2(1.33, 0.17)
+texture = ExtResource("4_8akwv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites/ZOffset" index="0"]
 self_modulate = Color(0.258824, 0.737255, 0.498039, 1)
+position = Vector2(1, -49)
 texture = ExtResource("2_sulqr")
+
+[node name="PickUpCollider" type="Area2D" parent="." index="5"]

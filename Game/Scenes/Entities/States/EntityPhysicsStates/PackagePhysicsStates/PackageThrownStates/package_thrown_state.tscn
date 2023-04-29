@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cblfi7710bg4d"]
+
+[ext_resource type="PackedScene" uid="uid://c8mt0wks31668" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PackagePhysicsStates/package_physics_state.tscn" id="1_jei1t"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PackagePhysicsStates/PackageThrownStates/package_thrown_state.gd" id="2_27yyx"]
+
+[node name="PackageThrownState" instance=ExtResource("1_jei1t")]
+script = ExtResource("2_27yyx")

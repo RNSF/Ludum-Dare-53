@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfxxpqlhbehld"]
+
+[ext_resource type="PackedScene" uid="uid://c8mt0wks31668" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PackagePhysicsStates/package_physics_state.tscn" id="1_76bps"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PackagePhysicsStates/PackagePickedUpStates/package_picked_up_state.gd" id="2_hg3t3"]
+
+[node name="PackagePickedUpState" instance=ExtResource("1_76bps")]
+script = ExtResource("2_hg3t3")

@@ -10,14 +10,14 @@ func enter(host: Node2D) -> void:
 			print("STATE ERROR: Host object does not have ' " + required_host_variable + " ' variable!");
 	return
 
-func exit(host: Node2D) -> void:
+func exit(_host: Node2D) -> void:
 	return
 
-func update(host: Node2D, delta: float):
+func update(_host: Node2D, _delta: float):
 	return
 
-func physics_update(host: Node2D, delta: float):
+func physics_update(_host: Node2D, _delta: float):
 	return
 
-func _on_animation_finished(anim_name: String) -> void:
+func _on_animation_finished(_anim_name: String) -> void:
 	return

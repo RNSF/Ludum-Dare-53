@@ -3,7 +3,7 @@ extends StateMachine
 
 var state_machine : StateMachine;
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	send_controls();
 
 func send_controls() -> void:

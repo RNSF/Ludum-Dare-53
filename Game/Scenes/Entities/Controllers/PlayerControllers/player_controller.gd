@@ -2,7 +2,7 @@ class_name PlayerController
 extends EntityController
 
 
-func update(host: Node2D, delta: float) -> void:
+func update(host: Node2D, delta: float):
 	find_walking_direction();
 	return super.update(host, delta);
 

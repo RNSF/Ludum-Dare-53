@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c17003g46hhfk"]
+
+[ext_resource type="PackedScene" uid="uid://d31t54vrirjno" path="res://Game/Scenes/Worlds/world.tscn" id="1_c8n1u"]
+[ext_resource type="PackedScene" uid="uid://de7ejq00742e3" path="res://Game/Scenes/Entities/Players/player.tscn" id="2_dfo8n"]
+[ext_resource type="PackedScene" uid="uid://csk416nr00yni" path="res://Game/Scenes/Entities/Packages/package.tscn" id="3_wphmv"]
+
+[node name="TestWorld" instance=ExtResource("1_c8n1u")]
+
+[node name="Player" parent="." index="0" instance=ExtResource("2_dfo8n")]
+position = Vector2(222, 166)
+
+[node name="Package" parent="." index="1" instance=ExtResource("3_wphmv")]
+position = Vector2(440, 312)
