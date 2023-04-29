@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bugok0sqmwary"]
+
+[ext_resource type="PackedScene" uid="uid://baaaqqrqgfjxi" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PlayerMovementStates/player_movement_state.tscn" id="1_phw3j"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PlayerMovementStates/NormalPlayerMovementStates/normal_player_movement_state.gd" id="2_xrgao"]
+
+[node name="NormalPlayerMovementState" instance=ExtResource("1_phw3j")]
+script = ExtResource("2_xrgao")
