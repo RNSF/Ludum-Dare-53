@@ -21,8 +21,8 @@ func apply_acceleration(host: Node2D, delta: float) -> void:
 
 
 func apply_friction(host: Node2D, delta: float) -> void:
-	var max_friction : float = host.velocity.normalized() * host.friction * delta;
+	var max_friction : float = host.friction * delta;
 	host.velocity -= min(max_friction, host.velocity.length()) * host.velocity.normalized();
 
 func reset_acceleration(host: Node2D) -> void:
-	host.accleration = Vector2.ZERO;
+	host.acceleration = Vector2.ZERO;

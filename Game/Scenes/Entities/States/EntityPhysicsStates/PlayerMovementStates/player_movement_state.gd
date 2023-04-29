@@ -15,6 +15,9 @@ func physics_update(host: Node2D, delta: float):
 
 
 func apply_walking_force(host: Node2D, delta: float):
-	if(host.velocity.length() < host.walking_speed):
-		var walking_direction : Vector2 = controls.get("Walking Direction", Vector2.ZERO);
-		host.acceleration += host.walking_acceleration * walking_direction;
+	var walking_direction : Vector2 = controls.get("Walking Direction", Vector2.ZERO);
+	var target_velocity : Vector2 = walking_direction * host.walking_speed;
+	var acceleration_direction : Vector2 = (target_velocity - host.velocity).normalized();
+	var is_slowing_down : bool = host.velocity.dot(acceleration_direction) < 0;
+	var walking_acceleration : float = host.walking_acceleration if !is_slowing_down else min(host.walking_acceleration, host.velocity.length()/delta)
+	host.acceleration += walking_acceleration * (target_velocity - host.velocity).normalized();

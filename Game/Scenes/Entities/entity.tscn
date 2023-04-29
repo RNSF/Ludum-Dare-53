@@ -13,4 +13,8 @@ script = ExtResource("2_10ekc")
 [node name="States" type="Node" parent="."]
 script = ExtResource("3_omhst")
 
+[node name="Sprites" type="Node2D" parent="."]
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

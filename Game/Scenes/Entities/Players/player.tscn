@@ -1,8 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://de7ejq00742e3"]
+[gd_scene load_steps=6 format=3 uid="uid://de7ejq00742e3"]
 
 [ext_resource type="PackedScene" uid="uid://brwl3bo0p4cyu" path="res://Game/Scenes/Entities/entity.tscn" id="1_hjgly"]
+[ext_resource type="PackedScene" uid="uid://da51mxv5dghau" path="res://Game/Scenes/Entities/Controllers/PlayerControllers/player_controller.tscn" id="2_3ubuq"]
 [ext_resource type="PackedScene" uid="uid://baaaqqrqgfjxi" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PlayerMovementStates/player_movement_state.tscn" id="2_bevlh"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/Players/player.gd" id="2_xp8ht"]
+[ext_resource type="Texture2D" uid="uid://dx5546um5d431" path="res://Game/Scenes/Debug/Solid.png" id="4_gjfrt"]
 
 [node name="Player" instance=ExtResource("1_hjgly")]
+script = ExtResource("2_xp8ht")
+friction = 1000.0
+normal_walking_speed = 0.0
+slow_walking_speed = 0.0
+walking_acceleration = 8000.0
+
+[node name="PlayerController" parent="Controllers" index="0" instance=ExtResource("2_3ubuq")]
 
 [node name="PlayerMovementState" parent="States" index="0" instance=ExtResource("2_bevlh")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites" index="0"]
+self_modulate = Color(0.243137, 0.513726, 0.819608, 1)
+texture = ExtResource("4_gjfrt")
