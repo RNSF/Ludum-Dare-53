@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://67oe5aowypco"]
+
+[ext_resource type="PackedScene" uid="uid://csk416nr00yni" path="res://Game/Scenes/Entities/Packages/package.tscn" id="1_44248"]
+[ext_resource type="Texture2D" uid="uid://bocospym3knns" path="res://Game/Scenes/Entities/Packages/StopperPackages/StopperPackage1.png" id="2_jf5cn"]
+[ext_resource type="Texture2D" uid="uid://cav785i8msow3" path="res://Game/Scenes/Entities/Packages/StopperPackages/StopperPackage2.png" id="3_vdig6"]
+[ext_resource type="Texture2D" uid="uid://f0xb5wfmtuua" path="res://Game/Scenes/Entities/Packages/StopperPackages/StopperPackage3.png" id="4_jgq0e"]
+[ext_resource type="Texture2D" uid="uid://kn8glj1o0w1p" path="res://Game/Scenes/Entities/Packages/StopperPackages/StopperPackage4.png" id="5_x54vj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6dtu"]
+size = Vector2(137, 138)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vi145"]
+radius = 121.066
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3nuwj"]
+polygon = PackedVector2Array(-78.9998, 69.0003, 59.0003, 68.9998, 58.9997, -69.0002, -79.0002, -68.9997)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxuop"]
+size = Vector2(138, 137)
+
+[node name="StopperPackage" instance=ExtResource("1_44248")]
+
+[node name="SpriteCycler" parent="Sprites/ZOffset" index="0"]
+position = Vector2(0, -60)
+
+[node name="Package1" parent="Sprites/ZOffset/SpriteCycler" index="0"]
+texture = ExtResource("2_jf5cn")
+
+[node name="Package2" parent="Sprites/ZOffset/SpriteCycler" index="1"]
+texture = ExtResource("3_vdig6")
+
+[node name="Package3" parent="Sprites/ZOffset/SpriteCycler" index="2"]
+texture = ExtResource("4_jgq0e")
+
+[node name="Package4" parent="Sprites/ZOffset/SpriteCycler" index="3"]
+texture = ExtResource("5_x54vj")
+
+[node name="CollisionShape2D" parent="CharacterBody2D" index="0"]
+position = Vector2(0, -60.5)
+shape = SubResource("RectangleShape2D_w6dtu")
+
+[node name="PickUpCollider" parent="." index="5"]
+position = Vector2(0, -60)
+
+[node name="CollisionShape2D" parent="PickUpCollider" index="0"]
+shape = SubResource("CircleShape2D_vi145")
+
+[node name="LightOccluder2D" parent="." index="6"]
+occluder = SubResource("OccluderPolygon2D_3nuwj")
+
+[node name="HurtBox" parent="." index="8"]
+collision_layer = 0
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, -59.5)
+shape = SubResource("RectangleShape2D_uxuop")
+
+[node name="CollectionArea" parent="." index="9"]
+position = Vector2(0, -60)

@@ -23,13 +23,14 @@ func update(host: Node2D, delta: float):
 
 
 func handle_package(host: Node2D) -> void:
-	var package : Package = host.package_detector.highlighted_package;
-	if(package == null):
-		return
+	if(is_instance_valid(host.package_detector.highlighted_package)):
+		var package : Package = host.package_detector.highlighted_package;
+		if(package == null):
+			return
 	
-	if(controls.get("Pick Up", false)):
-		package.pick_up(host, host.package_z_position);
-		host.picked_up_package = package;
+		if(controls.get("Pick Up", false)):
+			package.pick_up(host.package_marker);
+			host.picked_up_package = package;
 
 
 

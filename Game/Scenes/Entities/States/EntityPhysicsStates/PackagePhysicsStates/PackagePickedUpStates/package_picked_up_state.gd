@@ -6,7 +6,6 @@ var temp_collision_layer;
 
 func enter(host: Node2D) -> void:
 	required_host_variables.append_array([
-		"picked_up_z_position",
 		"picked_up_follow_speed",
 		"picked_up_follow_point",
 		"temp_collision_mask",
@@ -30,8 +29,8 @@ func physics_update(host: Node2D, delta: float):
 	host.velocity = Vector2.ZERO;
 	host.z_velocity = 0;
 	var lerp_weight : float = min(1.0, host.picked_up_follow_speed*delta);
-	host.z_position = lerp(host.z_position, host.picked_up_z_position, lerp_weight);
-	host.position = host.position.lerp(host.picked_up_follow_point.global_position, lerp_weight);
+	host.z_position = lerp(host.z_position, host.picked_up_follow_point.z_position, lerp_weight);
+	host.position = host.position.lerp(host.picked_up_follow_point.point, lerp_weight);
 
 func exit(host: Node2D) -> void:
 	host.character_body_2d.collision_mask = host.temp_collision_mask;

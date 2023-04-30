@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://de7ejq00742e3"]
+[gd_scene load_steps=26 format=3 uid="uid://de7ejq00742e3"]
 
 [ext_resource type="PackedScene" uid="uid://brwl3bo0p4cyu" path="res://Game/Scenes/Entities/entity.tscn" id="1_hjgly"]
 [ext_resource type="PackedScene" uid="uid://da51mxv5dghau" path="res://Game/Scenes/Entities/Controllers/PlayerControllers/player_controller.tscn" id="2_3ubuq"]
@@ -14,10 +14,325 @@
 [ext_resource type="Texture2D" uid="uid://clqvmdafxewv3" path="res://Game/Scenes/Entities/Players/Head.png" id="10_7avu3"]
 [ext_resource type="PackedScene" uid="uid://dgkh8jxqges6u" path="res://Game/Scenes/Health/health.tscn" id="10_c1mnb"]
 [ext_resource type="PackedScene" uid="uid://3alck56d0xy5" path="res://Game/Scenes/Entities/Shadows/shadow.tscn" id="10_tq700"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/Players/PackageMarker.gd" id="10_utehs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4506j"]
 radius = 40.0
 height = 106.0
+
+[sub_resource type="Animation" id="Animation_suh80"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/ZOffset/Body/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -70)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/ZOffset/Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ZOffset/Body:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ZOffset/Body/Head:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/ZOffset/Hands:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/ZOffset/Hands:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dtspr"]
+resource_name = "aim_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/ZOffset/Body:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, -70), Vector2(-1, -67)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/ZOffset/Body:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0698132]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ZOffset/Body/Head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -69)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ZOffset/Body/Head:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0174533, 0.0349066]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/ZOffset/Hands:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(4, 5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/ZOffset/Hands:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0907571]
+}
+
+[sub_resource type="Animation" id="Animation_ghwbx"]
+resource_name = "idle"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/ZOffset/Body/Head:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, -69), Vector2(1, -72), Vector2(1, -69)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/ZOffset/Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -70)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ZOffset/Body:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ZOffset/Body/Head:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/ZOffset/Hands:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 5), Vector2(0, 0), Vector2(0, 5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/ZOffset/Hands:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_atoaj"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/ZOffset/Body:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(-2, -64), Vector2(-2, -70), Vector2(-2, -64), Vector2(-2, -70)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/ZOffset/Body:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 1),
+"update": 0,
+"values": [0.0, 0.113446, 0.0, -0.113446]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ZOffset/Body/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, -69), Vector2(1, -73), Vector2(1, -69), Vector2(1, -73)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ZOffset/Body/Head:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.0523599, 0.0, 0.0523599, 3.72529e-09]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/ZOffset/Hands:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1.46388), Vector2(0, -2), Vector2(0, 1.46388), Vector2(0, -2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/ZOffset/Hands:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0174533, 0.0168309, -0.0174533]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dfmfl"]
+_data = {
+"RESET": SubResource("Animation_suh80"),
+"aim_in": SubResource("Animation_dtspr"),
+"idle": SubResource("Animation_ghwbx"),
+"walk": SubResource("Animation_atoaj")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jxs7b"]
 radius = 155.081
@@ -58,20 +373,28 @@ ambient_healing = 0.2
 position = Vector2(-2.50001, -4.5)
 scale = Vector2(0.725, 0.285)
 
-[node name="LeftHand" type="Sprite2D" parent="Sprites/ZOffset" index="0"]
+[node name="Hands" type="Node2D" parent="Sprites/ZOffset" index="0"]
+
+[node name="LeftHand" type="Sprite2D" parent="Sprites/ZOffset/Hands" index="0"]
 position = Vector2(-80, -70)
 texture = ExtResource("8_swmdw")
 
-[node name="RightHand" type="Sprite2D" parent="Sprites/ZOffset" index="1"]
+[node name="RightHand" type="Sprite2D" parent="Sprites/ZOffset/Hands" index="1"]
 position = Vector2(78, -72)
 texture = ExtResource("8_swmdw")
 
-[node name="Body2" type="Sprite2D" parent="Sprites/ZOffset" index="2"]
+[node name="PackageMarker" type="Marker2D" parent="Sprites/ZOffset/Hands" index="2" node_paths=PackedStringArray("player")]
+position = Vector2(0, -47)
+gizmo_extents = 23.9
+script = ExtResource("10_utehs")
+player = NodePath("../../../..")
+
+[node name="Body" type="Sprite2D" parent="Sprites/ZOffset" index="1"]
 position = Vector2(-2, -64)
 texture = ExtResource("9_0w6w2")
 
-[node name="Head" type="Sprite2D" parent="Sprites/ZOffset/Body2" index="0"]
-position = Vector2(1, -70)
+[node name="Head" type="Sprite2D" parent="Sprites/ZOffset/Body" index="0"]
+position = Vector2(0, -70)
 texture = ExtResource("10_7avu3")
 
 [node name="CharacterBody2D" parent="." index="3"]
@@ -82,11 +405,12 @@ position = Vector2(-2, -35)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4506j")
 
-[node name="PackageMarker" type="Marker2D" parent="." index="5"]
-position = Vector2(0, -47)
-gizmo_extents = 23.9
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_dfmfl")
+}
 
-[node name="PackageDetector" type="Area2D" parent="." index="6"]
+[node name="PackageDetector" type="Area2D" parent="." index="5"]
 position = Vector2(-2, -62)
 collision_layer = 0
 collision_mask = 32
@@ -98,7 +422,7 @@ maximum_pick_up_distance = 200.0
 shape = SubResource("CircleShape2D_jxs7b")
 metadata/_edit_lock_ = true
 
-[node name="AimingLine" type="Line2D" parent="." index="7"]
+[node name="AimingLine" type="Line2D" parent="." index="6"]
 width = 30.0
 width_curve = SubResource("Curve_3jg10")
 default_color = Color(0.980392, 0.956863, 0.827451, 1)
@@ -108,13 +432,13 @@ offset = Vector2(0, -50)
 [node name="Shadow" type="Line2D" parent="AimingLine" index="0"]
 default_color = Color(0, 0, 0, 0.2)
 
-[node name="Health" parent="." index="8" instance=ExtResource("10_c1mnb")]
+[node name="Health" parent="." index="7" instance=ExtResource("10_c1mnb")]
 max_health = 0.2
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="." index="9"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." index="8"]
 occluder = SubResource("OccluderPolygon2D_wtgi0")
 
-[node name="WatcherPoints" type="Node2D" parent="." index="10"]
+[node name="WatcherPoints" type="Node2D" parent="." index="9"]
 
 [node name="1" type="Marker2D" parent="WatcherPoints" index="0"]
 position = Vector2(0, -125)
@@ -122,7 +446,7 @@ position = Vector2(0, -125)
 [node name="2" type="Marker2D" parent="WatcherPoints" index="1"]
 position = Vector2(-2, -2)
 
-[node name="DetectableArea" type="Area2D" parent="." index="11"]
+[node name="DetectableArea" type="Area2D" parent="." index="10"]
 collision_layer = 16
 collision_mask = 0
 monitoring = false

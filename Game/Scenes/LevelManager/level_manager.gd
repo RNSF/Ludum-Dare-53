@@ -21,8 +21,12 @@ func change_level(new_level_index: int) -> void:
 	
 	current_level = load(LEVEL_PATH+levels[level_index % levels.size()]).instantiate();
 	current_level.level_completed.connect(_on_level_completed);
+	current_level.level_failed.connect(_on_level_failed);
 	
 	add_child(current_level);
 
 func _on_level_completed():
 	change_level(level_index + 1);
+
+func _on_level_failed():
+	change_level(level_index);

@@ -1,6 +1,8 @@
 class_name Package
 extends Entity
 
+signal destroyed(package)
+
 @export var gravity : float;
 @export var friction : float;
 @export var weight : float;
@@ -8,7 +10,6 @@ extends Entity
 @export var max_horizontal_throwing_speed : float;
 
 var picked_up_follow_point: Node2D;
-var picked_up_z_position: float;
 var picked_up_follow_speed := 30.0;
 var is_highlighted := false : set = set_is_hightlighted;
 var acceleration := Vector2.ZERO;
@@ -28,9 +29,8 @@ var temp_collision_layer;
 @onready var health := $Health;
 @onready var collection_area := $CollectionArea;
 
-func pick_up(follow_point: Node2D, follow_z_position: float) -> void:
+func pick_up(follow_point: Node2D) -> void:
 	picked_up_follow_point = follow_point;
-	picked_up_z_position = follow_z_position;
 	states.change_state(self, "PackagePickedUpState");
 
 
@@ -82,6 +82,7 @@ func _on_health_damaged(health, amount) -> void:
 
 
 func _on_health_died(health) -> void:
+	emit_signal("destroyed", self);
 	queue_free();
 	pass # Replace with function body.
 

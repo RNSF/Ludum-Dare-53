@@ -12,6 +12,7 @@ enum FOV {NARROW, NORMAL, FULL}
 var fov_angle = 0.0;
 var angle := 0.0 : set = set_angle;
 var target_angle := 0.0;
+var go_reverse := false;
 
 @onready var point_light := $PointLight2D;
 @onready var ray_cast := $RayCast2D;
@@ -34,7 +35,7 @@ func configure_distance():
 	collision_shape.shape.radius = distance;
 
 func _process(delta: float) -> void:
-	var real_target_angle = target_angle + offset_angle;
+	var real_target_angle = target_angle + offset_angle + int(go_reverse) * PI;
 	var reverse_direction : bool = abs(real_target_angle - angle) > PI;
 	var modded_target_angle = real_target_angle;
 	

@@ -17,3 +17,5 @@ z_index = -10
 
 [node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="UI" type="CanvasLayer" parent="."]

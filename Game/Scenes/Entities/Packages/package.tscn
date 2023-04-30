@@ -16,19 +16,19 @@
 [ext_resource type="Script" path="res://Game/Scenes/Entities/Packages/HurtBox.gd" id="14_3wqjr"]
 [ext_resource type="Script" path="res://Game/Scenes/Entities/Packages/CollectionArea.gd" id="15_a063k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1j1t"]
-size = Vector2(170.5, 165)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_asr37"]
+size = Vector2(177.001, 178.999)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vhqf2"]
-radius = 112.161
+[sub_resource type="CircleShape2D" id="CircleShape2D_e25d6"]
+radius = 160.153
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_v4hqu"]
-polygon = PackedVector2Array(-121, 90, 61, 90, 61, -92, -121, -91)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g5qal"]
+polygon = PackedVector2Array(-119, 89.0004, 60.0003, 88.9998, 59.9997, -90.0002, -119, -89.9996)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_db17j"]
-size = Vector2(181, 180)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3n1q"]
+size = Vector2(179, 179)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_co4og"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_g81cl"]
 radius = 2.0
 
 [node name="Package" instance=ExtResource("1_dopxw")]
@@ -71,10 +71,13 @@ texture = ExtResource("11_vcfqp")
 visible = false
 texture = ExtResource("12_7cc40")
 
+[node name="CharacterBody2D" parent="." index="3"]
+collision_mask = 2
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" index="0"]
-position = Vector2(-0.5, -75.75)
+position = Vector2(0.499998, -79.5)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_l1j1t")
+shape = SubResource("RectangleShape2D_asr37")
 
 [node name="PickUpCollider" type="Area2D" parent="." index="5"]
 position = Vector2(-1, -84)
@@ -83,14 +86,13 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpCollider" index="0"]
-shape = SubResource("CircleShape2D_vhqf2")
+shape = SubResource("CircleShape2D_e25d6")
 metadata/_edit_lock_ = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." index="6"]
-visible = false
 position = Vector2(0, -50)
 rotation = 1.5708
-occluder = SubResource("OccluderPolygon2D_v4hqu")
+occluder = SubResource("OccluderPolygon2D_g5qal")
 
 [node name="Health" type="Node" parent="." index="7"]
 script = ExtResource("13_tslgc")
@@ -104,8 +106,8 @@ script = ExtResource("14_3wqjr")
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(0.5, -80)
-shape = SubResource("RectangleShape2D_db17j")
+position = Vector2(0.5, -79.5)
+shape = SubResource("RectangleShape2D_b3n1q")
 
 [node name="CollectionArea" type="Area2D" parent="." index="9"]
 position = Vector2(0, -80)
@@ -114,7 +116,7 @@ collision_mask = 64
 script = ExtResource("15_a063k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea" index="0"]
-shape = SubResource("CircleShape2D_co4og")
+shape = SubResource("CircleShape2D_g81cl")
 
 [connection signal="damaged" from="Health" to="." method="_on_health_damaged"]
 [connection signal="died" from="Health" to="." method="_on_health_died"]

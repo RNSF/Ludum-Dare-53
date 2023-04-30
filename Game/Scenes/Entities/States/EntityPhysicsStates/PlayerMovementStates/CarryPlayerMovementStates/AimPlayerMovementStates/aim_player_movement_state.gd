@@ -9,6 +9,8 @@ func enter(host: Node2D) -> void:
 		"aiming_line",
 	]);
 	
+	idle_animation = "aim_in";
+	
 	host.walking_speed = host.aim_walking_speed;
 
 
