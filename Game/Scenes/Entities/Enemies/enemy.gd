@@ -21,6 +21,10 @@ func _ready() -> void:
 	override_ticker = false;
 	path_follow.loop = !ping_pong;
 
+func _process(delta: float) -> void:
+	super._process(delta);
+	sprites.scale.x = int(!(player_detector.angle > PI/2 - 0.01 and player_detector.angle < 3*PI/2 + 0.01 ))*2 - 1
+
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta);
 	switch_frame_ticker -= 1;

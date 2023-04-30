@@ -18,7 +18,7 @@ func damage(amount: float) -> float:
 	health -= min(health, amount);
 	emit_signal("damaged", self, min(health, amount));
 	
-	if(health <= 0):
+	if(health <= 0 and old_health != health):
 		die();
 	return amount - (old_health - health);
 

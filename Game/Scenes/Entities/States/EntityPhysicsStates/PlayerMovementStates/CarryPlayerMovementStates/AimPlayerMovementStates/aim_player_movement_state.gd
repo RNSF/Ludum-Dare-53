@@ -32,8 +32,9 @@ func update(host: Node2D, delta: float):
 		return "NormalPlayerMovementState"
 
 func physics_update(host: Node2D, delta: float):
+	var result = super.physics_update(host, delta);
 	host.aiming_line.points_3D = host.picked_up_package.throw_line_points;
-	return super.physics_update(host, delta);
+	return result;
 
 
 func handle_package(host: Node2D, aim_point) -> void:

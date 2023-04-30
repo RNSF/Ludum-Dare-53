@@ -28,6 +28,7 @@ var temp_collision_layer;
 @onready var hurt_box := $HurtBox;
 @onready var health := $Health;
 @onready var collection_area := $CollectionArea;
+@onready var destroy_particle := $DestroyParticle;
 
 func pick_up(follow_point: Node2D) -> void:
 	picked_up_follow_point = follow_point;
@@ -75,7 +76,7 @@ func throw() -> void:
 
 
 func _on_health_damaged(health, amount) -> void:
-	
+	destroy_particle.play(self);
 	for i in range(ceil(amount)):
 		sprite_cycler.next();
 	pass # Replace with function body.
@@ -83,8 +84,12 @@ func _on_health_damaged(health, amount) -> void:
 
 func _on_health_died(health) -> void:
 	emit_signal("destroyed", self);
+	Global.camera_shake(12.0, 0.4);
+	for i in range(2):
+		destroy_particle.play(self);
 	queue_free();
 	pass # Replace with function body.
 
 func collect():
+	destroy_particle.play(self);
 	queue_free();

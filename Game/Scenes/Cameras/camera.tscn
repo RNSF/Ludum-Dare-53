@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkasy37wev5ju"]
+[gd_scene load_steps=3 format=3 uid="uid://bkasy37wev5ju"]
 
 [ext_resource type="Script" path="res://Game/Scenes/Cameras/camera.gd" id="1_4d2ma"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ho515"]
+frequency = 0.121
+
 [node name="Camera" type="Node2D"]
 script = ExtResource("1_4d2ma")
+shake_noise = SubResource("FastNoiseLite_ho515")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true

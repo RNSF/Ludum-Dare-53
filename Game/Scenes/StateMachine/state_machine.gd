@@ -25,6 +25,8 @@ func physics_update(host: Node2D, delta: float) -> void:
 
 func change_state(host: Node2D, state_name: String) -> void:
 	if(current_state != null):
+		if(current_state.name == state_name):
+			return
 		current_state.exit(host);
 	
 	var new_state : Node = null;

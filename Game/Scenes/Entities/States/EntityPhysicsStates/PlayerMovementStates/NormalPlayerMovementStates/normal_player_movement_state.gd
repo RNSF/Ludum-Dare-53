@@ -11,6 +11,8 @@ func enter(host: Node2D) -> void:
 		"picked_up_package",
 	]);
 	
+	var a: Array[Vector3]
+	host.aiming_line.points_3D = a;
 	host.walking_speed = host.normal_walking_speed;
 
 func update(host: Node2D, delta: float):

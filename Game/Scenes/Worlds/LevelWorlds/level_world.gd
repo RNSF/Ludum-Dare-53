@@ -3,6 +3,7 @@ extends GameWorld
 
 signal level_completed
 signal level_failed
+signal level_go_back
 
 @onready var level_end := $LevelEnd;
 @onready var camera := $Camera;
@@ -10,7 +11,8 @@ signal level_failed
 @onready var lost := false;
 @onready var finish_timer := $FinishTimer;
 @onready var game_ui := $UI/GameUI
-@onready var won := false;
+var won := false;
+var go_back := false;
 
 func _ready() -> void:
 	level_end.total_number_of_packages = count_total_number_of_packages();
@@ -22,8 +24,13 @@ func _process(delta: float) -> void:
 	super._process(delta);
 	if(Input.is_action_just_pressed("restart_level")):
 		lost = true;
-		emit_signal("level_failed");
-
+		transition.fade_out();
+	if(Input.is_action_just_pressed("next_level")):
+		won = true;
+		transition.fade_out();
+	if(Input.is_action_just_pressed("previous_level")):
+		go_back = true;
+		transition.fade_out();
 func _on_level_end_level_completed() -> void:
 	won = true;
 	transition.fade_out();
@@ -93,6 +100,8 @@ func _on_finish_timer_timeout() -> void:
 	transition.fade_out();
 
 func faded_out():
+	if(go_back):
+		emit_signal("level_go_back");
 	if(won):
 		emit_signal("level_completed");
 	else:

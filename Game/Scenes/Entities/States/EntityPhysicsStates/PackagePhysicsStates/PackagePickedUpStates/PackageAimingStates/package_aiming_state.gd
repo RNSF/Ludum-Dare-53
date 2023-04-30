@@ -16,7 +16,10 @@ func physics_update(host: Node2D, delta: float):
 	simulate_throw(host);
 	return result;
 
-
+func exit(host: Node2D) -> void:
+	var a: Array[Vector3];
+	host.throw_line_points = a;
+	super.exit(host);
 
 
 func simulate_throw(host: Node2D):

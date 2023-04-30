@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 
 
 func _on_health_died(health) -> void:
+	Global.camera_shake(12.0, 0.4);
 	emit_signal("caught");
 	pass # Replace with function body.
 
