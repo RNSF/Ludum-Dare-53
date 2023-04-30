@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4ass5fn3me7u"]
+
+[ext_resource type="PackedScene" uid="uid://8wq6sdw3404h" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PlayerMovementStates/CarryPlayerMovementStates/carry_player_movement_state.tscn" id="1_t06ud"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PlayerMovementStates/CarryPlayerMovementStates/AimPlayerMovementStates/aim_player_movement_state.gd" id="2_1yfrf"]
+
+[node name="AimPlayerMovementState" instance=ExtResource("1_t06ud")]
+script = ExtResource("2_1yfrf")

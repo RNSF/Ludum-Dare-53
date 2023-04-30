@@ -14,14 +14,17 @@ func enter(host: Node2D):
 	]);
 
 func physics_update(host: Node2D, delta: float):
+	apply_physics(host, delta);
+	return super.physics_update(host, delta);
+
+
+func apply_physics(host: Node2D, delta: float) -> void:
 	apply_acceleration(host, delta);
 	apply_friction(host, delta);
 	reset_acceleration(host);
-	
 	apply_gravity(host);
 	apply_z_acceleration(host, delta);
 	reset_z_acceleration(host);
-	return super.physics_update(host, delta);
 
 func apply_acceleration(host: Node2D, delta: float) -> void: 
 	var acceleration : Vector2 = host.acceleration;
@@ -36,7 +39,7 @@ func reset_acceleration(host: Node2D) -> void:
 	host.acceleration = Vector2.ZERO;
 
 func apply_gravity(host: Node2D)  -> void:
-	host.z_acceleration += host.gravity;
+	host.z_acceleration -= host.gravity;
 
 func apply_z_acceleration(host: Node2D, delta: float) -> void: 
 	host.z_velocity += host.z_acceleration*delta;

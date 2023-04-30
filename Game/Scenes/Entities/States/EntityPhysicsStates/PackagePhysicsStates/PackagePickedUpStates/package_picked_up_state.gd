@@ -1,3 +1,4 @@
+class_name PackagePickedUpState
 extends PackagePhysicsState
 
 
@@ -14,6 +15,7 @@ func enter(host: Node2D) -> void:
 func physics_update(host: Node2D, delta: float):
 	super.physics_update(host, delta);
 	host.velocity = Vector2.ZERO;
+	host.z_velocity = 0;
 	var lerp_weight : float = min(1.0, host.picked_up_follow_speed*delta);
 	host.z_position = lerp(host.z_position, host.picked_up_z_position, lerp_weight);
 	host.position = host.position.lerp(host.picked_up_follow_point.global_position, lerp_weight);

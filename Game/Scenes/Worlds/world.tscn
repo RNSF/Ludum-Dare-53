@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://d31t54vrirjno"]
+[gd_scene load_steps=4 format=3 uid="uid://d31t54vrirjno"]
 
 [ext_resource type="Script" path="res://Game/Scenes/Worlds/world.gd" id="1_l2f11"]
+[ext_resource type="PackedScene" uid="uid://jxyiohlmmt3r" path="res://Game/Scenes/Worlds/Grounds/ground.tscn" id="2_3nkdd"]
+[ext_resource type="PackedScene" uid="uid://bxljc24acnld7" path="res://Game/Scenes/Worlds/Walls/walls.tscn" id="3_x7wa2"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_l2f11")
+
+[node name="Ground" parent="." instance=ExtResource("2_3nkdd")]
+self_modulate = Color(0.239216, 0.45098, 0.407843, 1)
+
+[node name="Walls" parent="." instance=ExtResource("3_x7wa2")]
+self_modulate = Color(0.054902, 0.231373, 0.262745, 1)

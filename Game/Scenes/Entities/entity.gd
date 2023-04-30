@@ -26,14 +26,23 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	controllers.physics_update(self, delta);
 	states.physics_update(self, delta);
-	move();
+	move(delta);
+	z_index = global_position.y + 1000000;
 
-func move():
-	character_body_2d.velocity = velocity;
-	character_body_2d.move_and_slide();
-	velocity = character_body_2d.velocity;
+func move(delta: float, slide := true):
+	if(slide):
+		character_body_2d.velocity = velocity;
+		character_body_2d.move_and_slide();
+		velocity = character_body_2d.velocity;
+	else:
+		var collision = character_body_2d.move_and_collide(velocity*delta);
+		if(collision):
+			velocity = Vector2.ZERO;
+	
 	position += character_body_2d.position;
 	character_body_2d.position = Vector2.ZERO;
+	
+	z_position += z_velocity * delta;
 	
 	if(z_position <= 0):
 		z_position = 0;

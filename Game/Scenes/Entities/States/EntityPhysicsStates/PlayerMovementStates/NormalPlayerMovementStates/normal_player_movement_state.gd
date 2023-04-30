@@ -8,13 +8,17 @@ func enter(host: Node2D) -> void:
 		"normal_walking_speed",
 		"package_detector",
 		"package_z_position",
+		"picked_up_package",
 	]);
 	
 	host.walking_speed = host.normal_walking_speed;
 
-func physics_update(host: Node2D, delta: float):
+func update(host: Node2D, delta: float):
+	var result = super.update(host, delta);
 	handle_package(host);
-	return super.physics_update(host, delta);
+	if(host.picked_up_package):
+		return "CarryPlayerMovementState";
+	return result
 
 
 
@@ -23,8 +27,9 @@ func handle_package(host: Node2D) -> void:
 	if(package == null):
 		return
 	
-	if(controls.get("Pick Up")):
+	if(controls.get("Pick Up", false)):
 		package.pick_up(host, host.package_z_position);
+		host.picked_up_package = package;
 
 
 

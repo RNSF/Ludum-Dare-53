@@ -9,3 +9,12 @@ func enter(host: Node2D) -> void:
 	]);
 	
 	host.walking_speed = host.carry_walking_speed;
+
+
+func update(host: Node2D, delta: float):
+	var result = super.update(host, delta);
+	if(host.picked_up_package == null):
+		return "NormalPlayerMovementState";
+	if(controls.get("Start Aim")):
+		return "AimPlayerMovementState"
+	return result
