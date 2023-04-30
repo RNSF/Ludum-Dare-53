@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://csk416nr00yni"]
+[gd_scene load_steps=19 format=3 uid="uid://csk416nr00yni"]
 
 [ext_resource type="PackedScene" uid="uid://brwl3bo0p4cyu" path="res://Game/Scenes/Entities/entity.tscn" id="1_dopxw"]
 [ext_resource type="PackedScene" uid="uid://cblfi7710bg4d" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PackagePhysicsStates/PackageThrownStates/package_thrown_state.tscn" id="2_1rrr4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bbsdjdwhtnv0y" path="res://Game/Scenes/Entities/Packages/Package3.png" id="11_vcfqp"]
 [ext_resource type="Texture2D" uid="uid://dkc8rph2s3kcs" path="res://Game/Scenes/Entities/Packages/Package4.png" id="12_7cc40"]
 [ext_resource type="Script" path="res://Game/Scenes/Health/health.gd" id="13_tslgc"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/Packages/HurtBox.gd" id="14_3wqjr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1j1t"]
 size = Vector2(170.5, 165)
@@ -91,7 +92,12 @@ occluder = SubResource("OccluderPolygon2D_v4hqu")
 script = ExtResource("13_tslgc")
 max_health = 4.0
 
-[node name="HurtBox" type="Area2D" parent="." index="8"]
+[node name="HurtBox" type="Area2D" parent="." index="8" node_paths=PackedStringArray("health")]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("14_3wqjr")
+health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(0.5, -80)

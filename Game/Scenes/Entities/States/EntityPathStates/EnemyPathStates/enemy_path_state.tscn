@@ -5,4 +5,3 @@
 
 [node name="EnemyPathState" instance=ExtResource("1_v7ryr")]
 script = ExtResource("2_yg7od")
-track_old = false

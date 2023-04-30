@@ -15,6 +15,7 @@ extends Entity
 @onready var package_detector := $PackageDetector;
 @onready var aiming_line := $AimingLine;
 @onready var health = $Health;
+@onready var watcher_points := $WatcherPoints;
 
 var walking_speed := normal_walking_speed;
 var acceleration := Vector2.ZERO;
@@ -26,3 +27,8 @@ var picked_up_package : Package;
 func _process(delta: float) -> void:
 	health.heal(ambient_healing*delta);
 	super._process(delta);
+
+
+func _on_health_died(health) -> void:
+	queue_free();
+	pass # Replace with function body.

@@ -9,6 +9,9 @@
 radius = 250.0
 
 [node name="PlayerDetector" type="Area2D"]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
 script = ExtResource("1_j8lam")
 fov_textures = {
 0: ExtResource("2_rb1nr"),
