@@ -10,6 +10,7 @@ signal level_failed
 @onready var lost := false;
 @onready var finish_timer := $FinishTimer;
 @onready var game_ui := $UI/GameUI
+@onready var won := false;
 
 func _ready() -> void:
 	level_end.total_number_of_packages = count_total_number_of_packages();
@@ -17,8 +18,15 @@ func _ready() -> void:
 	camera.animate("to_player", level_end.global_position, 1.0, player.global_position, 0.7, 3.0);
 	player.remove_control();
 
+func _process(delta: float) -> void:
+	super._process(delta);
+	if(Input.is_action_just_pressed("restart_level")):
+		lost = true;
+		emit_signal("level_failed");
+
 func _on_level_end_level_completed() -> void:
-	emit_signal("level_completed");
+	won = true;
+	transition.fade_out();
 	pass # Replace with function body.
 
 
@@ -82,4 +90,11 @@ func fail():
 	finish_timer.start();
 
 func _on_finish_timer_timeout() -> void:
-	emit_signal("level_failed");
+	transition.fade_out();
+
+func faded_out():
+	if(won):
+		emit_signal("level_completed");
+	else:
+		emit_signal("level_failed");
+	pass

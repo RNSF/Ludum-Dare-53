@@ -8,3 +8,7 @@ func enter(host: Node2D) -> void:
 	host.velocity = Vector2.ZERO;
 	host.light_occluder.show();
 	host.collection_area.in_simulation_mode = false;
+	host.hurt_box.monitorable = true;
+
+func exit(host: Node2D) -> void:
+	host.hurt_box.monitorable = false;

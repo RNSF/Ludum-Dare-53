@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d31t54vrirjno"]
+[gd_scene load_steps=5 format=3 uid="uid://d31t54vrirjno"]
 
 [ext_resource type="Script" path="res://Game/Scenes/Worlds/world.gd" id="1_l2f11"]
 [ext_resource type="PackedScene" uid="uid://jxyiohlmmt3r" path="res://Game/Scenes/Worlds/Grounds/ground.tscn" id="2_3nkdd"]
 [ext_resource type="PackedScene" uid="uid://bxljc24acnld7" path="res://Game/Scenes/Worlds/Walls/walls.tscn" id="3_x7wa2"]
+[ext_resource type="PackedScene" uid="uid://q85cjmc1ulvk" path="res://Game/Scenes/UI/Transitions/transition.tscn" id="4_yhrwr"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_l2f11")
@@ -19,3 +20,7 @@ z_index = -10
 y_sort_enabled = true
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Transition" parent="UI" instance=ExtResource("4_yhrwr")]
+
+[connection signal="faded_out" from="UI/Transition" to="." method="_on_transition_faded_out"]

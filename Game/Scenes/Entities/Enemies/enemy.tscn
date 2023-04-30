@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ll4el7d8iq2m"]
+[gd_scene load_steps=16 format=3 uid="uid://ll4el7d8iq2m"]
 
 [ext_resource type="PackedScene" uid="uid://brwl3bo0p4cyu" path="res://Game/Scenes/Entities/entity.tscn" id="1_d1v7k"]
 [ext_resource type="PackedScene" uid="uid://bvsfprhbhherg" path="res://Game/Scenes/Entities/Enemies/PlayerDetectors/player_detector.tscn" id="2_5p2kv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Game/Scenes/Entities/Enemies/enemy.gd" id="2_htevq"]
 [ext_resource type="Texture2D" uid="uid://dtl1htby142pb" path="res://Game/Scenes/Entities/Enemies/Head.png" id="3_lc0k5"]
 [ext_resource type="PackedScene" uid="uid://blccn1i25xyur" path="res://Game/Scenes/Entities/States/EntityPathStates/EnemyPathStates/enemy_path_state.tscn" id="3_thyxk"]
+[ext_resource type="PackedScene" uid="uid://3alck56d0xy5" path="res://Game/Scenes/Entities/Shadows/shadow.tscn" id="6_xd8g0"]
 [ext_resource type="Script" path="res://Game/Scenes/Entities/Enemies/Path.gd" id="7_8rpqn"]
 [ext_resource type="Script" path="res://Game/Scenes/Entities/Enemies/HitBox.gd" id="7_f3dor"]
 
@@ -99,6 +100,10 @@ texture = ExtResource("2_e7my6")
 position = Vector2(6, -70)
 texture = ExtResource("3_lc0k5")
 
+[node name="Shadow" parent="Sprites" index="1" instance=ExtResource("6_xd8g0")]
+position = Vector2(0.499996, 9)
+scale = Vector2(0.585, 0.24)
+
 [node name="PlayerDetector" parent="." index="3" instance=ExtResource("2_5p2kv")]
 turn_speed = 1.0
 offset_angle = 1.571
@@ -125,7 +130,7 @@ script = ExtResource("7_8rpqn")
 visible = false
 z_index = -3
 position = Vector2(0, 10)
-default_color = Color(0, 0, 0, 0.2)
+default_color = Color(0.164706, 0.356863, 0.321569, 1)
 
 [node name="Line2D" type="Line2D" parent="Path2D" index="1"]
 z_index = -3

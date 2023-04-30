@@ -29,7 +29,7 @@ func configure_fov():
 	fov_angle = {
 		FOV.NARROW: 20.0/180.0*PI,
 		FOV.NORMAL: PI/4.0,
-		FOV.FULL: PI,
+		FOV.FULL: PI/3.0,
 	}.get(fov);
 
 func configure_distance():

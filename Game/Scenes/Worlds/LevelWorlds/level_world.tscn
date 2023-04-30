@@ -14,11 +14,14 @@ script = ExtResource("2_o12sb")
 z_index = -9
 position = Vector2(1392, 13)
 
+[node name="HelperTexts" type="Node2D" parent="." index="2"]
+z_index = -4
+
 [node name="Player" parent="Entities" index="0" instance=ExtResource("3_db14h")]
 
-[node name="Camera" parent="." index="4" instance=ExtResource("5_f45ay")]
+[node name="Camera" parent="." index="5" instance=ExtResource("5_f45ay")]
 
-[node name="FinishTimer" type="Timer" parent="." index="5"]
+[node name="FinishTimer" type="Timer" parent="." index="6"]
 
 [node name="GameUI" parent="UI" index="0" instance=ExtResource("6_tlfjt")]
 
