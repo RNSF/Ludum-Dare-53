@@ -10,6 +10,10 @@ func enter(host: Node2D) -> void:
 		"ping_pong",
 		"go_reverse",
 	]);
+	
+	host.path.global_position = Vector2.ZERO;
+	host.global_position = host.path_follow.global_position;
+	
 
 func physics_update(host: Node2D, delta: float):
 	var result = super.physics_update(host, delta);

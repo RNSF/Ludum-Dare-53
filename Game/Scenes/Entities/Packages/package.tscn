@@ -32,6 +32,7 @@ size = Vector2(179, 179)
 radius = 2.0
 
 [node name="Package" instance=ExtResource("1_dopxw")]
+scale = Vector2(1.4, 1.4)
 script = ExtResource("2_lfacl")
 gravity = 4000.0
 friction = 0.0
@@ -72,7 +73,7 @@ visible = false
 texture = ExtResource("12_7cc40")
 
 [node name="CharacterBody2D" parent="." index="3"]
-collision_mask = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" index="0"]
 position = Vector2(0.499998, -79.5)

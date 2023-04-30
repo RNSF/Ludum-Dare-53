@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvsfprhbhherg"]
+[gd_scene load_steps=7 format=3 uid="uid://bvsfprhbhherg"]
 
 [ext_resource type="Script" path="res://Game/Scenes/Entities/Enemies/PlayerDetectors/player_detector.gd" id="1_j8lam"]
 [ext_resource type="Texture2D" uid="uid://brcjd4y44s45m" path="res://Game/Scenes/Entities/Enemies/PlayerDetectors/120.png" id="1_uy5u2"]
-[ext_resource type="Texture2D" uid="uid://cnefpiuvjjr1d" path="res://Game/Scenes/Entities/Enemies/PlayerDetectors/60.png" id="2_rb1nr"]
+[ext_resource type="Texture2D" uid="uid://ic11odj64bl4" path="res://Game/Scenes/Entities/Enemies/PlayerDetectors/20.png" id="2_xp8ce"]
 [ext_resource type="Texture2D" uid="uid://baknlqq6a8ts2" path="res://Game/Scenes/Entities/Enemies/PlayerDetectors/360.png" id="3_6w7q5"]
+[ext_resource type="Texture2D" uid="uid://uu406wacg3mf" path="res://Game/Scenes/Entities/Enemies/PlayerDetectors/90.png" id="3_km202"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0h2ye"]
 radius = 250.0
@@ -14,8 +15,8 @@ collision_mask = 16
 monitorable = false
 script = ExtResource("1_j8lam")
 fov_textures = {
-0: ExtResource("2_rb1nr"),
-1: ExtResource("1_uy5u2"),
+0: ExtResource("2_xp8ce"),
+1: ExtResource("3_km202"),
 2: ExtResource("3_6w7q5")
 }
 

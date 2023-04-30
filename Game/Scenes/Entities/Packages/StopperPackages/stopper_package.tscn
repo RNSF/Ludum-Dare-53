@@ -35,6 +35,10 @@ texture = ExtResource("4_jgq0e")
 [node name="Package4" parent="Sprites/ZOffset/SpriteCycler" index="3"]
 texture = ExtResource("5_x54vj")
 
+[node name="CharacterBody2D" parent="." index="3"]
+collision_layer = 3
+collision_mask = 4
+
 [node name="CollisionShape2D" parent="CharacterBody2D" index="0"]
 position = Vector2(0, -60.5)
 shape = SubResource("RectangleShape2D_w6dtu")

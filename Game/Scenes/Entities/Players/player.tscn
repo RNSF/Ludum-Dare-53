@@ -342,11 +342,11 @@ _data = [Vector2(0.00581396, 0.98556), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.41634, 
 point_count = 2
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wtgi0"]
-polygon = PackedVector2Array(-56, 5, -19, 12, 23, 13, 56, 5, 49, -110, 38, -127, -31, -126, -54, -109)
+polygon = PackedVector2Array(-56, 5, -25, 3, 22, 3, 53, 4, 49, -110, 38, -127, -31, -126, -54, -109)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xjrbv"]
-radius = 52.0
-height = 166.0
+radius = 38.0
+height = 118.0
 
 [node name="Player" instance=ExtResource("1_hjgly")]
 script = ExtResource("2_xp8ht")
@@ -356,7 +356,7 @@ carry_walking_speed = 400.0
 aim_walking_speed = 160.0
 walking_acceleration = 8000.0
 gravity = 0.0
-throw_strength = 800.0
+throw_strength = 1000.0
 ambient_healing = 0.2
 
 [node name="PlayerController" parent="Controllers" index="0" instance=ExtResource("2_3ubuq")]
@@ -433,9 +433,10 @@ offset = Vector2(0, -50)
 default_color = Color(0, 0, 0, 0.2)
 
 [node name="Health" parent="." index="7" instance=ExtResource("10_c1mnb")]
-max_health = 0.2
+max_health = 0.3
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." index="8"]
+visible = false
 occluder = SubResource("OccluderPolygon2D_wtgi0")
 
 [node name="WatcherPoints" type="Node2D" parent="." index="9"]
@@ -444,7 +445,7 @@ occluder = SubResource("OccluderPolygon2D_wtgi0")
 position = Vector2(0, -125)
 
 [node name="2" type="Marker2D" parent="WatcherPoints" index="1"]
-position = Vector2(-2, -2)
+position = Vector2(-3, -32)
 
 [node name="DetectableArea" type="Area2D" parent="." index="10"]
 collision_layer = 16
@@ -452,7 +453,7 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectableArea" index="0"]
-position = Vector2(-3, -80)
+position = Vector2(-3, -84)
 shape = SubResource("CapsuleShape2D_xjrbv")
 
 [connection signal="died" from="Health" to="." method="_on_health_died"]

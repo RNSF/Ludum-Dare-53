@@ -1,6 +1,6 @@
 extends Area2D
 
-const STANDARD_DISTANCE := 250.0;
+const STANDARD_DISTANCE := 1000.0;
 enum FOV {NARROW, NORMAL, FULL} 
 
 @export var fov : FOV;
@@ -8,11 +8,13 @@ enum FOV {NARROW, NORMAL, FULL}
 @export var fov_textures : Dictionary;
 @export var turn_speed := 3.0;
 @export var offset_angle := 0.0;
+@export var flip_when_reversed := true;
 
 var fov_angle = 0.0;
 var angle := 0.0 : set = set_angle;
 var target_angle := 0.0;
 var go_reverse := false;
+
 
 @onready var point_light := $PointLight2D;
 @onready var ray_cast := $RayCast2D;
@@ -25,8 +27,8 @@ func _ready() -> void:
 func configure_fov():
 	point_light.texture = fov_textures[fov];
 	fov_angle = {
-		FOV.NARROW: PI/6.0,
-		FOV.NORMAL: PI/3.0,
+		FOV.NARROW: 20.0/180.0*PI,
+		FOV.NORMAL: PI/4.0,
 		FOV.FULL: PI,
 	}.get(fov);
 
@@ -35,7 +37,7 @@ func configure_distance():
 	collision_shape.shape.radius = distance;
 
 func _process(delta: float) -> void:
-	var real_target_angle = target_angle + offset_angle + int(go_reverse) * PI;
+	var real_target_angle = target_angle + offset_angle + int(go_reverse && flip_when_reversed) * PI;
 	var reverse_direction : bool = abs(real_target_angle - angle) > PI;
 	var modded_target_angle = real_target_angle;
 	
@@ -45,7 +47,7 @@ func _process(delta: float) -> void:
 		else:
 			modded_target_angle = real_target_angle + 2*PI;
 	
-	angle = lerp(angle, modded_target_angle, turn_speed*delta);
+	angle = lerp(angle, modded_target_angle, min(1.0, turn_speed*delta));
 	angle = fposmod(angle, 2*PI);
 
 func _physics_process(delta: float) -> void:

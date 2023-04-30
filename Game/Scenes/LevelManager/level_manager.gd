@@ -5,8 +5,12 @@ const LEVEL_PATH = "res://Game/Scenes/Worlds/LevelWorlds/Levels/"
 @export var level_index := 0;
 
 var levels := [
+	"level_world_7.tscn",
+	"level_world_4.tscn",
 	"level_world_1.tscn",
-	"level_world_2.tscn"
+	"level_world_2.tscn",
+	"level_world_3.tscn",
+	
 ];
 var current_level : LevelWorld;
 

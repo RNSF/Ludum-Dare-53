@@ -14,7 +14,7 @@ signal level_failed
 func _ready() -> void:
 	level_end.total_number_of_packages = count_total_number_of_packages();
 	level_end.update_label();
-	camera.animate("to_player", level_end.global_position, 1.0, player.global_position, 0.8, 3.0);
+	camera.animate("to_player", level_end.global_position, 1.0, player.global_position, 0.7, 3.0);
 	player.remove_control();
 
 func _on_level_end_level_completed() -> void:

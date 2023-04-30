@@ -31,7 +31,6 @@ position = Vector2(400, -500)
 position = Vector2(-400, -500)
 
 [node name="Enemy" parent="Entities" index="3" instance=ExtResource("3_vj4vu")]
-ping_pong = false
 
 [node name="PlayerDetector" parent="Entities/Enemy" index="3"]
 distance = 700.0

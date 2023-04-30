@@ -87,6 +87,7 @@ radius = 23.0217
 script = ExtResource("2_htevq")
 walk_speed = 400.0
 ping_pong = false
+start_reverse = false
 
 [node name="EnemyPathState" parent="States" index="0" instance=ExtResource("3_thyxk")]
 
@@ -99,12 +100,11 @@ position = Vector2(6, -70)
 texture = ExtResource("3_lc0k5")
 
 [node name="PlayerDetector" parent="." index="3" instance=ExtResource("2_5p2kv")]
-distance = 1000.0
 turn_speed = 1.0
 offset_angle = 1.571
 
 [node name="CharacterBody2D" parent="." index="4"]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" index="0"]
