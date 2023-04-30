@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://blccn1i25xyur"]
+
+[ext_resource type="PackedScene" uid="uid://da5bmsshntlsv" path="res://Game/Scenes/Entities/States/EntityPathStates/entity_path_state.tscn" id="1_v7ryr"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/States/EntityPathStates/EnemyPathStates/enemy_path_state.gd" id="2_yg7od"]
+
+[node name="EnemyPathState" instance=ExtResource("1_v7ryr")]
+script = ExtResource("2_yg7od")
+track_old = false

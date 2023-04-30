@@ -17,6 +17,10 @@ func update(host: Node2D, delta: float):
 	if(result != null):
 		return result;
 	var aim_point = controls.get("Aim Point");
+	"""
+	if(host.picked_up_package != null and aim_point != null):
+		host.picked_up_package.z_index = host.z_index + sign(host.global_position.y - aim_point.y);
+	"""
 	handle_package(host, aim_point);
 	
 	if(aim_point == null):
@@ -34,6 +38,7 @@ func handle_package(host: Node2D, aim_point) -> void:
 	host.picked_up_package.aim(aim_point, host.throw_strength);
 	if(controls.get("Throw", false)):
 		host.picked_up_package.throw();
+		host.picked_up_package.z_index = host.z_index;
 		host.picked_up_package = null;
 
 func exit(host: Node2D) -> void:

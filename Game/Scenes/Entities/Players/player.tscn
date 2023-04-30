@@ -1,32 +1,42 @@
-[gd_scene load_steps=13 format=3 uid="uid://de7ejq00742e3"]
+[gd_scene load_steps=18 format=3 uid="uid://de7ejq00742e3"]
 
 [ext_resource type="PackedScene" uid="uid://brwl3bo0p4cyu" path="res://Game/Scenes/Entities/entity.tscn" id="1_hjgly"]
 [ext_resource type="PackedScene" uid="uid://da51mxv5dghau" path="res://Game/Scenes/Entities/Controllers/PlayerControllers/player_controller.tscn" id="2_3ubuq"]
 [ext_resource type="Script" path="res://Game/Scenes/Entities/Players/player.gd" id="2_xp8ht"]
-[ext_resource type="Texture2D" uid="uid://dx5546um5d431" path="res://Game/Scenes/Debug/Solid.png" id="4_gjfrt"]
 [ext_resource type="PackedScene" uid="uid://bugok0sqmwary" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PlayerMovementStates/NormalPlayerMovementStates/normal_player_movement_state.tscn" id="4_xkt3d"]
 [ext_resource type="PackedScene" uid="uid://8wq6sdw3404h" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PlayerMovementStates/CarryPlayerMovementStates/carry_player_movement_state.tscn" id="5_08olg"]
 [ext_resource type="PackedScene" uid="uid://c4ass5fn3me7u" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PlayerMovementStates/CarryPlayerMovementStates/AimPlayerMovementStates/aim_player_movement_state.tscn" id="6_debt7"]
 [ext_resource type="Script" path="res://Game/Scenes/Entities/Players/PackageDetector.gd" id="7_6hhls"]
+[ext_resource type="Texture2D" uid="uid://bmw6iw2drwhev" path="res://Game/Scenes/Entities/Players/Hand.png" id="8_swmdw"]
+[ext_resource type="Texture2D" uid="uid://ddcoht56nqyft" path="res://Game/Scenes/Entities/Players/Body.png" id="9_0w6w2"]
 [ext_resource type="Script" path="res://Game/Scenes/Entities/Players/AimingLine.gd" id="9_gfixg"]
+[ext_resource type="Texture2D" uid="uid://clqvmdafxewv3" path="res://Game/Scenes/Entities/Players/Head.png" id="10_7avu3"]
 [ext_resource type="PackedScene" uid="uid://dgkh8jxqges6u" path="res://Game/Scenes/Health/health.tscn" id="10_c1mnb"]
+[ext_resource type="PackedScene" uid="uid://3alck56d0xy5" path="res://Game/Scenes/Entities/Shadows/shadow.tscn" id="10_tq700"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4506j"]
-radius = 21.0
-height = 96.0
+radius = 40.0
+height = 106.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jxs7b"]
-radius = 92.0
+radius = 155.081
+
+[sub_resource type="Curve" id="Curve_3jg10"]
+_data = [Vector2(0.00581396, 0.98556), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.41634, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wtgi0"]
+polygon = PackedVector2Array(-56, 5, -19, 12, 23, 13, 56, 5, 41, -29, -46, -31)
 
 [node name="Player" instance=ExtResource("1_hjgly")]
 script = ExtResource("2_xp8ht")
 friction = 1000.0
-normal_walking_speed = 500.0
-carry_walking_speed = 300.0
-aim_walking_speed = 100.0
+normal_walking_speed = 700.0
+carry_walking_speed = 400.0
+aim_walking_speed = 160.0
 walking_acceleration = 8000.0
 gravity = 0.0
-throw_strength = 400.0
+throw_strength = 800.0
 ambient_healing = 0.0
 
 [node name="PlayerController" parent="Controllers" index="0" instance=ExtResource("2_3ubuq")]
@@ -37,16 +47,31 @@ ambient_healing = 0.0
 
 [node name="AimPlayerMovementState" parent="States" index="2" instance=ExtResource("6_debt7")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprites" index="0"]
-self_modulate = Color(0.243137, 0.513726, 0.819608, 1)
-position = Vector2(0, -43)
-texture = ExtResource("4_gjfrt")
+[node name="Shadow" parent="Sprites" index="0" instance=ExtResource("10_tq700")]
+position = Vector2(-2.50001, -4.5)
+scale = Vector2(0.725, 0.285)
+
+[node name="LeftHand" type="Sprite2D" parent="Sprites/ZOffset" index="0"]
+position = Vector2(-80, -70)
+texture = ExtResource("8_swmdw")
+
+[node name="RightHand" type="Sprite2D" parent="Sprites/ZOffset" index="1"]
+position = Vector2(78, -72)
+texture = ExtResource("8_swmdw")
+
+[node name="Body2" type="Sprite2D" parent="Sprites/ZOffset" index="2"]
+position = Vector2(-2, -64)
+texture = ExtResource("9_0w6w2")
+
+[node name="Head" type="Sprite2D" parent="Sprites/ZOffset/Body2" index="0"]
+position = Vector2(1, -70)
+texture = ExtResource("10_7avu3")
 
 [node name="CharacterBody2D" parent="." index="3"]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" index="0"]
-position = Vector2(0, -14)
+position = Vector2(-2, -35)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4506j")
 
@@ -55,22 +80,29 @@ position = Vector2(0, -47)
 gizmo_extents = 23.9
 
 [node name="PackageDetector" type="Area2D" parent="." index="6"]
-position = Vector2(1, -20)
+position = Vector2(-2, -62)
 collision_layer = 0
 collision_mask = 32
 monitorable = false
 script = ExtResource("7_6hhls")
-maximum_pick_up_distance = 40.0
+maximum_pick_up_distance = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PackageDetector" index="0"]
 shape = SubResource("CircleShape2D_jxs7b")
 metadata/_edit_lock_ = true
 
 [node name="AimingLine" type="Line2D" parent="." index="7"]
+width = 30.0
+width_curve = SubResource("Curve_3jg10")
+default_color = Color(0.980392, 0.956863, 0.827451, 1)
 script = ExtResource("9_gfixg")
+offset = Vector2(0, -50)
 
 [node name="Shadow" type="Line2D" parent="AimingLine" index="0"]
 default_color = Color(0, 0, 0, 0.2)
 
 [node name="Health" parent="." index="8" instance=ExtResource("10_c1mnb")]
 max_health = 0.5
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." index="9"]
+occluder = SubResource("OccluderPolygon2D_wtgi0")

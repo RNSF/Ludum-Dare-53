@@ -1,9 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://ll4el7d8iq2m"]
+[gd_scene load_steps=8 format=3 uid="uid://ll4el7d8iq2m"]
 
 [ext_resource type="PackedScene" uid="uid://brwl3bo0p4cyu" path="res://Game/Scenes/Entities/entity.tscn" id="1_d1v7k"]
 [ext_resource type="PackedScene" uid="uid://bvsfprhbhherg" path="res://Game/Scenes/Entities/Enemies/PlayerDetectors/player_detector.tscn" id="2_5p2kv"]
+[ext_resource type="Texture2D" uid="uid://tvbrpq46ag5l" path="res://Game/Scenes/Entities/Enemies/Body.png" id="2_e7my6"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/Enemies/enemy.gd" id="2_htevq"]
+[ext_resource type="Texture2D" uid="uid://dtl1htby142pb" path="res://Game/Scenes/Entities/Enemies/Head.png" id="3_lc0k5"]
+[ext_resource type="PackedScene" uid="uid://blccn1i25xyur" path="res://Game/Scenes/Entities/States/EntityPathStates/EnemyPathStates/enemy_path_state.tscn" id="3_thyxk"]
+
+[sub_resource type="Curve2D" id="Curve2D_fifrr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 632, 277, 38.0546, -68.4983, -38.0546, 68.4983, 834, 711, 186.468, 95.1366, -186.468, -95.1366, -309, 588, 76.1093, 121.775, -76.1093, -121.775, -717, 185, -331.075, -7.61092, 331.075, 7.61092, 39, -462, 0, 0, 0, 0, 632, 277)
+}
+point_count = 6
 
 [node name="Enemy" instance=ExtResource("1_d1v7k")]
+script = ExtResource("2_htevq")
+walk_speed = 400.0
 
-[node name="PlayerDetector" parent="." index="5" instance=ExtResource("2_5p2kv")]
-distance = 500.0
+[node name="EnemyPathState" parent="States" index="0" instance=ExtResource("3_thyxk")]
+
+[node name="Body" type="Sprite2D" parent="Sprites/ZOffset" index="0"]
+position = Vector2(-3, -45)
+texture = ExtResource("2_e7my6")
+
+[node name="Head" type="Sprite2D" parent="Sprites/ZOffset/Body" index="0"]
+position = Vector2(6, -70)
+texture = ExtResource("3_lc0k5")
+
+[node name="PlayerDetector" parent="." index="3" instance=ExtResource("2_5p2kv")]
+distance = 1000.0
+
+[node name="Path2D" type="Path2D" parent="." index="6"]
+curve = SubResource("Curve2D_fifrr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
+position = Vector2(632, 277)
+rotation = 1.13518

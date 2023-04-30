@@ -9,6 +9,8 @@ func enter(host: Node2D) -> void:
 	]);
 	
 	host.walking_speed = host.carry_walking_speed;
+	if(host.picked_up_package):
+		host.picked_up_package.z_index = host.z_index - 1;
 
 
 func update(host: Node2D, delta: float):

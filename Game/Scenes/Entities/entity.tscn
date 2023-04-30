@@ -5,8 +5,6 @@
 [ext_resource type="Script" path="res://Game/Scenes/Entities/States/entity_states.gd" id="3_omhst"]
 
 [node name="Entity" type="Node2D"]
-z_as_relative = false
-y_sort_enabled = true
 script = ExtResource("1_cvmy2")
 
 [node name="Controllers" type="Node" parent="."]

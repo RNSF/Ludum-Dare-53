@@ -6,8 +6,11 @@ enum FOV {NARROW, NORMAL, FULL}
 @export var fov : FOV;
 @export var distance := STANDARD_DISTANCE;
 @export var fov_textures : Dictionary;
+@export var turn_speed := 3.0;
 
 var fov_angle = 0.0;
+var angle := 0.0 : set = set_angle;
+var target_angle := 0.0;
 
 @onready var point_light := $PointLight2D;
 @onready var ray_cast := $RayCast2D;
@@ -20,14 +23,27 @@ func _ready() -> void:
 func configure_fov():
 	point_light.texture = fov_textures[fov];
 	fov_angle = {
-		FOV.NARROW: 30,
-		FOV.NORMAL: 60,
-		FOV.FULL: 180,
+		FOV.NARROW: PI/6.0,
+		FOV.NORMAL: PI/3.0,
+		FOV.FULL: PI,
 	}.get(fov);
 
 func configure_distance():
 	point_light.scale = Vector2.ONE * distance/STANDARD_DISTANCE;
 	collision_shape.shape.radius = distance;
+
+func _process(delta: float) -> void:
+	var reverse_direction : bool = abs(target_angle - angle) > PI;
+	var modded_target_angle = target_angle;
+	
+	if(reverse_direction):
+		if(target_angle > angle):
+			modded_target_angle = target_angle - 2*PI;
+		else:
+			modded_target_angle = target_angle + 2*PI;
+	
+	angle = lerp(angle, modded_target_angle, turn_speed*delta);
+	angle = fposmod(angle, 2*PI);
 
 func _physics_process(delta: float) -> void:
 	for area in get_overlapping_areas():
@@ -38,6 +54,21 @@ func _physics_process(delta: float) -> void:
 			continue
 			
 		ray_cast.target_position = area.global_position - global_position;
+		
+		var direction = Vector2.from_angle(angle);
+		
+		if(abs(ray_cast.target_position.angle_to(direction)) > fov_angle):
+			continue
+		
 		ray_cast.force_raycast_update();
-		if(!ray_cast.is_colliding()):
-			player.health.damage(delta);
+		
+		if(ray_cast.is_colliding()):
+			continue
+		
+		player.health.damage(delta);
+
+func set_angle(n: float):
+	angle = n;
+	point_light.rotation = angle;
+	collision_shape.rotation = angle;
+	

@@ -17,6 +17,7 @@ func enter(host: Node2D) -> void:
 
 func physics_update(host: Node2D, delta: float):
 	if(host.z_position <= 0):
+		host.health.damage(1);
 		return "PackageLandedState";
 	return super.physics_update(host, delta);
 

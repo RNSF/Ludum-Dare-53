@@ -23,6 +23,8 @@ var temp_collision_layer;
 
 @onready var pick_up_collider := $PickUpCollider;
 @onready var light_occluder := $LightOccluder2D;
+@onready var sprite_cycler := $Sprites/ZOffset/SpriteCycler;
+@onready var health := $Health;
 
 func pick_up(follow_point: Node2D, follow_z_position: float) -> void:
 	picked_up_follow_point = follow_point;
@@ -39,7 +41,6 @@ func aim(target_aim_point, throw_strength: float) -> void:
 	if(target_aim_point):
 		var throw_vector = (target_aim_point - global_position);
 		aim_point = global_position + min(throw_vector.length(), max_throw_distance) * throw_vector.normalized();
-		print(aim_point);
 		update_aim_velocity();
 		states.change_state(self, "PackageAimingState");
 	else:
@@ -53,7 +54,6 @@ func update_aim_velocity() -> void:
 	var horizontal_throwing_speed : float = lerp(min_horizontal_throwing_speed, max_horizontal_throwing_speed, range_percentage);
 	var horizontal_throwing_velocity = throwing_direction * horizontal_throwing_speed;
 	
-	print(min_horizontal_throwing_speed)
 	
 	var time : float = throwing_distance / horizontal_throwing_speed;
 	var z_throwing_speed = (0.5*gravity*pow(time, 2) - z_position) / (time);
@@ -70,3 +70,15 @@ func throw() -> void:
 	velocity = Vector2(aim_velocity.x, aim_velocity.y);
 	z_velocity = aim_velocity.z; 
 	states.change_state(self, "PackageThrownState");
+
+
+func _on_health_damaged(health, amount) -> void:
+	
+	for i in range(ceil(amount)):
+		sprite_cycler.next();
+	pass # Replace with function body.
+
+
+func _on_health_died(health) -> void:
+	queue_free();
+	pass # Replace with function body.

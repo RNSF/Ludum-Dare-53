@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://da5bmsshntlsv"]
+
+[ext_resource type="PackedScene" uid="uid://batbvm4dwbamr" path="res://Game/Scenes/Entities/States/entity_state.tscn" id="1_78d5c"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/States/EntityPathStates/entity_path_state.gd" id="2_wryn3"]
+
+[node name="EntityPathState" instance=ExtResource("1_78d5c")]
+script = ExtResource("2_wryn3")
