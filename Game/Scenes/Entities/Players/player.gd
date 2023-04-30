@@ -32,3 +32,9 @@ func _process(delta: float) -> void:
 func _on_health_died(health) -> void:
 	queue_free();
 	pass # Replace with function body.
+
+func give_control():
+	controllers.change_state(self, "PlayerController");
+
+func remove_control():
+	controllers.change_state(self, "ClearedController");

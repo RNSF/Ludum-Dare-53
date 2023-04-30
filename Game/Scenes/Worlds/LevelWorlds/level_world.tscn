@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://r1rrg8ym4g3m"]
+[gd_scene load_steps=6 format=3 uid="uid://r1rrg8ym4g3m"]
 
 [ext_resource type="PackedScene" uid="uid://d31t54vrirjno" path="res://Game/Scenes/Worlds/world.tscn" id="1_jj4mk"]
 [ext_resource type="Script" path="res://Game/Scenes/Worlds/LevelWorlds/level_world.gd" id="2_o12sb"]
 [ext_resource type="PackedScene" uid="uid://de7ejq00742e3" path="res://Game/Scenes/Entities/Players/player.tscn" id="3_db14h"]
 [ext_resource type="PackedScene" uid="uid://csmysx17evp1d" path="res://Game/Scenes/LevelEnd/level_end.tscn" id="3_ty3ta"]
+[ext_resource type="PackedScene" uid="uid://bkasy37wev5ju" path="res://Game/Scenes/Cameras/camera.tscn" id="5_f45ay"]
 
 [node name="LevelWorld" instance=ExtResource("1_jj4mk")]
 script = ExtResource("2_o12sb")
@@ -13,4 +14,7 @@ position = Vector2(1392, 13)
 
 [node name="Player" parent="Entities" index="0" instance=ExtResource("3_db14h")]
 
+[node name="Camera" parent="." index="4" instance=ExtResource("5_f45ay")]
+
 [connection signal="level_completed" from="LevelEnd" to="." method="_on_level_end_level_completed"]
+[connection signal="animation_finished" from="Camera" to="." method="_on_camera_animation_finished"]

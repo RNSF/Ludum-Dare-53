@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://fimfugm6qbw"]
+
+[ext_resource type="PackedScene" uid="uid://gd2bmrscoph5" path="res://Game/Scenes/Entities/Controllers/entity_controller.tscn" id="1_c7kmp"]
+[ext_resource type="Script" path="res://Game/Scenes/Entities/Controllers/ClearedControllers.gd" id="2_67w5m"]
+
+[node name="ClearedController" instance=ExtResource("1_c7kmp")]
+script = ExtResource("2_67w5m")

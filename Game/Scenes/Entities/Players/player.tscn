@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://de7ejq00742e3"]
+[gd_scene load_steps=20 format=3 uid="uid://de7ejq00742e3"]
 
 [ext_resource type="PackedScene" uid="uid://brwl3bo0p4cyu" path="res://Game/Scenes/Entities/entity.tscn" id="1_hjgly"]
 [ext_resource type="PackedScene" uid="uid://da51mxv5dghau" path="res://Game/Scenes/Entities/Controllers/PlayerControllers/player_controller.tscn" id="2_3ubuq"]
 [ext_resource type="Script" path="res://Game/Scenes/Entities/Players/player.gd" id="2_xp8ht"]
+[ext_resource type="PackedScene" uid="uid://fimfugm6qbw" path="res://Game/Scenes/Entities/Controllers/ClearedControllers.tscn" id="3_fw1wj"]
 [ext_resource type="PackedScene" uid="uid://bugok0sqmwary" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PlayerMovementStates/NormalPlayerMovementStates/normal_player_movement_state.tscn" id="4_xkt3d"]
 [ext_resource type="PackedScene" uid="uid://8wq6sdw3404h" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PlayerMovementStates/CarryPlayerMovementStates/carry_player_movement_state.tscn" id="5_08olg"]
 [ext_resource type="PackedScene" uid="uid://c4ass5fn3me7u" path="res://Game/Scenes/Entities/States/EntityPhysicsStates/PlayerMovementStates/CarryPlayerMovementStates/AimPlayerMovementStates/aim_player_movement_state.tscn" id="6_debt7"]
@@ -44,6 +45,8 @@ throw_strength = 800.0
 ambient_healing = 0.2
 
 [node name="PlayerController" parent="Controllers" index="0" instance=ExtResource("2_3ubuq")]
+
+[node name="ClearedController" parent="Controllers" index="1" instance=ExtResource("3_fw1wj")]
 
 [node name="NormalPlayerMovementState" parent="States" index="0" instance=ExtResource("4_xkt3d")]
 
