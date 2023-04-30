@@ -8,11 +8,14 @@ func enter(host: Node2D) -> void:
 	required_host_variables.append_array([
 		"throw_line_points",
 	]);
+	
+	host.collection_area.in_simulation_mode = true;
 
 func physics_update(host: Node2D, delta: float):
 	var result = super.physics_update(host, delta);
 	simulate_throw(host);
 	return result;
+
 
 
 
@@ -44,6 +47,8 @@ func simulate_throw(host: Node2D):
 		host.move(1.0/60.0, false);
 		add_throwing_point(host);
 	
+	var final_position := host.global_position;
+	
 	host.character_body_2d.collision_mask = real_collision_mask;
 	host.character_body_2d.collision_layer = real_collision_layer;
 	
@@ -53,6 +58,8 @@ func simulate_throw(host: Node2D):
 	host.z_acceleration = real_z_acceleration;
 	host.z_position = real_z_position;
 	host.global_position = real_position;
+	
+	host.collection_area.real_pos = final_position;
 
 func add_throwing_point(host: Node2D):
 	var point := Vector3(

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Ludum-Dare-53"
-run/main_scene="res://Game/Scenes/Worlds/TestWorlds/test_world.tscn"
+run/main_scene="res://Game/Scenes/Worlds/LevelWorlds/TestLevelWorlds/test_level_world.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -64,6 +64,7 @@ player_move={
 2d_physics/layer_4="PackageHurtBox"
 2d_physics/layer_5="PlayerDetectable"
 2d_physics/layer_6="PackageDetection"
+2d_physics/layer_7="PackageCollection"
 
 [rendering]
 

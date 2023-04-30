@@ -8,6 +8,7 @@ func enter(host: Node2D) -> void:
 	
 	required_host_variables.append_array([
 		"temp_collision_mask",
+		"collection_area",
 	]);
 	
 	host.pick_up_collider.monitorable = false;
@@ -17,7 +18,10 @@ func enter(host: Node2D) -> void:
 
 func physics_update(host: Node2D, delta: float):
 	if(host.z_position <= 0):
-		host.health.damage(1);
+		if(is_instance_valid(host.collection_area.level_end) and host.collection_area.will_be_in):
+			host.collection_area.level_end.collect(host);
+		else:
+			host.health.damage(1);
 		return "PackageLandedState";
 	return super.physics_update(host, delta);
 

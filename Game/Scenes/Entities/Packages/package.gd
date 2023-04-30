@@ -24,7 +24,9 @@ var temp_collision_layer;
 @onready var pick_up_collider := $PickUpCollider;
 @onready var light_occluder := $LightOccluder2D;
 @onready var sprite_cycler := $Sprites/ZOffset/SpriteCycler;
+@onready var hurt_box := $HurtBox;
 @onready var health := $Health;
+@onready var collection_area := $CollectionArea;
 
 func pick_up(follow_point: Node2D, follow_z_position: float) -> void:
 	picked_up_follow_point = follow_point;
@@ -82,3 +84,6 @@ func _on_health_damaged(health, amount) -> void:
 func _on_health_died(health) -> void:
 	queue_free();
 	pass # Replace with function body.
+
+func collect():
+	queue_free();
