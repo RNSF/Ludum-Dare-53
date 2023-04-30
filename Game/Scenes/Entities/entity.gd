@@ -1,6 +1,8 @@
 class_name Entity
 extends Node2D
 
+@export var is_slider := true;
+
 var velocity : Vector2;
 
 var z_position : float;
@@ -26,8 +28,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	controllers.physics_update(self, delta);
 	states.physics_update(self, delta);
-	move(delta);
-	z_index = global_position.y + 1000000;
+	move(delta, is_slider);
 
 func move(delta: float, slide := true):
 	if(slide):

@@ -42,13 +42,16 @@ self_modulate = Color(0.243137, 0.513726, 0.819608, 1)
 position = Vector2(0, -43)
 texture = ExtResource("4_gjfrt")
 
+[node name="CharacterBody2D" parent="." index="3"]
+collision_layer = 0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" index="0"]
 position = Vector2(0, -14)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4506j")
 
 [node name="PackageMarker" type="Marker2D" parent="." index="5"]
-position = Vector2(0, -88)
+position = Vector2(0, -47)
 gizmo_extents = 23.9
 
 [node name="PackageDetector" type="Area2D" parent="." index="6"]
@@ -65,6 +68,9 @@ metadata/_edit_lock_ = true
 
 [node name="AimingLine" type="Line2D" parent="." index="7"]
 script = ExtResource("9_gfixg")
+
+[node name="Shadow" type="Line2D" parent="AimingLine" index="0"]
+default_color = Color(0, 0, 0, 0.2)
 
 [node name="Health" parent="." index="8" instance=ExtResource("10_c1mnb")]
 max_health = 0.5

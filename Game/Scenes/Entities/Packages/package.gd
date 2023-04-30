@@ -17,9 +17,12 @@ var max_throw_distance := 0.0;
 var aim_point : Vector2;
 var aim_velocity : Vector3;
 var throw_line_points : Array[Vector3];
+var temp_collision_mask;
+var temp_collision_layer;
 
 
 @onready var pick_up_collider := $PickUpCollider;
+@onready var light_occluder := $LightOccluder2D;
 
 func pick_up(follow_point: Node2D, follow_z_position: float) -> void:
 	picked_up_follow_point = follow_point;

@@ -9,6 +9,11 @@ script = ExtResource("1_l2f11")
 
 [node name="Ground" parent="." instance=ExtResource("2_3nkdd")]
 self_modulate = Color(0.239216, 0.45098, 0.407843, 1)
+scale = Vector2(0.5, 0.5)
 
 [node name="Walls" parent="." instance=ExtResource("3_x7wa2")]
 self_modulate = Color(0.054902, 0.231373, 0.262745, 1)
+scale = Vector2(0.5, 0.5)
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
