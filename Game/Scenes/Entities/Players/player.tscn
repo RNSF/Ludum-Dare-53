@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://de7ejq00742e3"]
+[gd_scene load_steps=30 format=3 uid="uid://de7ejq00742e3"]
 
 [ext_resource type="PackedScene" uid="uid://brwl3bo0p4cyu" path="res://Game/Scenes/Entities/entity.tscn" id="1_hjgly"]
 [ext_resource type="PackedScene" uid="uid://da51mxv5dghau" path="res://Game/Scenes/Entities/Controllers/PlayerControllers/player_controller.tscn" id="2_3ubuq"]
@@ -15,6 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://dgkh8jxqges6u" path="res://Game/Scenes/Health/health.tscn" id="10_c1mnb"]
 [ext_resource type="PackedScene" uid="uid://3alck56d0xy5" path="res://Game/Scenes/Entities/Shadows/shadow.tscn" id="10_tq700"]
 [ext_resource type="Script" path="res://Game/Scenes/Entities/Players/PackageMarker.gd" id="10_utehs"]
+[ext_resource type="PackedScene" uid="uid://unpoqn8unwwt" path="res://Game/Scenes/Sounds/sounds.tscn" id="16_aki4e"]
+[ext_resource type="PackedScene" uid="uid://bt4ifiu5ibh40" path="res://Game/Scenes/Sounds/sound_effect.tscn" id="17_c7g4v"]
+[ext_resource type="AudioStream" uid="uid://cg20wp6qglcy2" path="res://Game/Sounds/PlayerSpotted.wav" id="18_0jqtj"]
+[ext_resource type="AudioStream" uid="uid://d2m1ch6tkpcwg" path="res://Game/Sounds/PlayerFootsteps.wav" id="19_gaqn0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4506j"]
 radius = 40.0
@@ -94,6 +98,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sounds/Footstep:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_dtspr"]
 resource_name = "aim_in"
@@ -165,10 +181,22 @@ tracks/5/path = NodePath("Sprites/ZOffset/Hands:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.2001),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0907571]
+"values": [0.0, 0.0907571, 0.0907571]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sounds/Footstep:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ghwbx"]
@@ -325,6 +353,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [0.0, 0.0174533, 0.0168309, -0.0174533]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sounds/Footstep:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dfmfl"]
 _data = {
@@ -433,7 +473,7 @@ offset = Vector2(0, -50)
 default_color = Color(0, 0, 0, 0.2)
 
 [node name="Health" parent="." index="7" instance=ExtResource("10_c1mnb")]
-max_health = 0.3
+max_health = 0.25
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." index="8"]
 visible = false
@@ -455,5 +495,15 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectableArea" index="0"]
 position = Vector2(-3, -84)
 shape = SubResource("CapsuleShape2D_xjrbv")
+
+[node name="Sounds" parent="." index="11" instance=ExtResource("16_aki4e")]
+
+[node name="Spotted" parent="Sounds" index="0" instance=ExtResource("17_c7g4v")]
+stream = ExtResource("18_0jqtj")
+
+[node name="Footstep" parent="Sounds" index="1" instance=ExtResource("17_c7g4v")]
+stream = ExtResource("19_gaqn0")
+volume_db = -12.057
+pitch_scale = 0.74
 
 [connection signal="died" from="Health" to="." method="_on_health_died"]

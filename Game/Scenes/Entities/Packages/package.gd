@@ -29,6 +29,7 @@ var temp_collision_layer;
 @onready var health := $Health;
 @onready var collection_area := $CollectionArea;
 @onready var destroy_particle := $DestroyParticle;
+@onready var sounds := $Sounds;
 
 func pick_up(follow_point: Node2D) -> void:
 	picked_up_follow_point = follow_point;
@@ -42,7 +43,7 @@ func set_is_hightlighted(n: bool):
 func aim(target_aim_point, throw_strength: float) -> void:
 	max_throw_distance = throw_strength/weight;
 	if(target_aim_point):
-		var throw_vector = (target_aim_point - global_position);
+		var throw_vector = (target_aim_point - global_position) * scale.x;
 		aim_point = global_position + min(throw_vector.length(), max_throw_distance) * throw_vector.normalized();
 		update_aim_velocity();
 		states.change_state(self, "PackageAimingState");
@@ -85,8 +86,8 @@ func _on_health_damaged(health, amount) -> void:
 func _on_health_died(health) -> void:
 	emit_signal("destroyed", self);
 	Global.camera_shake(12.0, 0.4);
-	for i in range(2):
-		destroy_particle.play(self);
+	destroy_particle.play(self);
+	destroy_particle.play(self, true);
 	queue_free();
 	pass # Replace with function body.
 

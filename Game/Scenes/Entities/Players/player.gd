@@ -18,6 +18,7 @@ signal caught
 @onready var aiming_line := $AimingLine;
 @onready var health = $Health;
 @onready var watcher_points := $WatcherPoints;
+@onready var sounds := $Sounds;
 
 var walking_speed := normal_walking_speed;
 var acceleration := Vector2.ZERO;
@@ -37,6 +38,7 @@ func _process(delta: float) -> void:
 func _on_health_died(health) -> void:
 	Global.camera_shake(12.0, 0.4);
 	emit_signal("caught");
+	sounds.play("Spotted");
 	pass # Replace with function body.
 
 func give_control():

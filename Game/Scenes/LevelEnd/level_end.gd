@@ -7,13 +7,14 @@ var total_number_of_packages := 0;
 
 @onready var animation_player := $AnimationPlayer;
 @onready var label := $Sprites/Label;
+@onready var sounds := $Sounds
 
 
 func collect(package: Package) -> void:	
 	package.collect();
 	animation_player.play("collect");
 	collected_packages += 1;
-	
+	sounds.play("Collect");
 	if(collected_packages >= total_number_of_packages):
 		emit_signal("level_completed");
 	

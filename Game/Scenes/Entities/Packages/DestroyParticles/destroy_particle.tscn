@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://1kpcn5vyb7fx"]
+[gd_scene load_steps=5 format=3 uid="uid://1kpcn5vyb7fx"]
 
 [ext_resource type="Script" path="res://Game/Scenes/Entities/Packages/DestroyParticles/destroy_particle.gd" id="1_neah0"]
+[ext_resource type="PackedScene" uid="uid://bt4ifiu5ibh40" path="res://Game/Scenes/Sounds/sound_effect.tscn" id="2_4i886"]
+[ext_resource type="AudioStream" uid="uid://dkgg7j6go6egw" path="res://Game/Sounds/BoxDestroy.wav" id="3_ty0gm"]
 
 [sub_resource type="Gradient" id="Gradient_uvyu0"]
 offsets = PackedFloat32Array(0, 0.84127, 1)
@@ -52,5 +54,8 @@ color = Color(0.054902, 0.231373, 0.262745, 1)
 color_ramp = SubResource("Gradient_uvyu0")
 
 [node name="DeathTimer" type="Timer" parent="."]
+
+[node name="Destroy" parent="." instance=ExtResource("2_4i886")]
+stream = ExtResource("3_ty0gm")
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

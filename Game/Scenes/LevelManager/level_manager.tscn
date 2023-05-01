@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqfa5s7242i5p"]
+[gd_scene load_steps=4 format=3 uid="uid://cqfa5s7242i5p"]
 
 [ext_resource type="Script" path="res://Game/Scenes/LevelManager/level_manager.gd" id="1_bpre6"]
+[ext_resource type="PackedScene" uid="uid://unpoqn8unwwt" path="res://Game/Scenes/Sounds/sounds.tscn" id="2_6w2mb"]
+[ext_resource type="AudioStream" uid="uid://d4n3cla7v2bd1" path="res://Game/Sounds/Music.wav" id="3_ittfb"]
 
 [node name="LevelManager" type="Node2D"]
 script = ExtResource("1_bpre6")
+
+[node name="Sounds" parent="." instance=ExtResource("2_6w2mb")]
+
+[node name="Music" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("3_ittfb")
+volume_db = -6.029
+bus = &"Music"

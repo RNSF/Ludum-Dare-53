@@ -14,7 +14,9 @@ func enter(host: Node2D) -> void:
 	host.pick_up_collider.monitorable = false;
 	
 	host.temp_collision_mask = host.character_body_2d.collision_layer;
-	host.character_body_2d.collision_layer = 0
+	host.character_body_2d.collision_layer = 0;
+	Global.camera_shake(0.5, 0.1);
+	host.sounds.play("Throw");
 
 func physics_update(host: Node2D, delta: float):
 	if(host.z_position <= 0):

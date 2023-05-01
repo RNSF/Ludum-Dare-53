@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://csmysx17evp1d"]
+[gd_scene load_steps=14 format=3 uid="uid://csmysx17evp1d"]
 
 [ext_resource type="Script" path="res://Game/Scenes/LevelEnd/level_end.gd" id="1_0i84p"]
 [ext_resource type="PackedScene" uid="uid://3alck56d0xy5" path="res://Game/Scenes/Entities/Shadows/shadow.tscn" id="1_k5smc"]
 [ext_resource type="Texture2D" uid="uid://cjrm2hxsk1f15" path="res://Game/Scenes/LevelEnd/End.png" id="2_ggkpr"]
 [ext_resource type="FontFile" uid="uid://cw5kytm3g2kho" path="res://Game/Fonts/Palanquin/Palanquin-Bold.ttf" id="3_wfqbo"]
+[ext_resource type="PackedScene" uid="uid://unpoqn8unwwt" path="res://Game/Scenes/Sounds/sounds.tscn" id="5_bya8d"]
+[ext_resource type="PackedScene" uid="uid://bt4ifiu5ibh40" path="res://Game/Scenes/Sounds/sound_effect.tscn" id="6_t2wal"]
+[ext_resource type="AudioStream" uid="uid://coc4anox7x77r" path="res://Game/Sounds/BoxCollected.wav" id="7_m5hv1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oekj8"]
 size = Vector2(400, 400)
@@ -147,3 +150,8 @@ shape = SubResource("RectangleShape2D_oekj8")
 libraries = {
 "": SubResource("AnimationLibrary_x0dci")
 }
+
+[node name="Sounds" parent="." instance=ExtResource("5_bya8d")]
+
+[node name="Collect" parent="Sounds" instance=ExtResource("6_t2wal")]
+stream = ExtResource("7_m5hv1")

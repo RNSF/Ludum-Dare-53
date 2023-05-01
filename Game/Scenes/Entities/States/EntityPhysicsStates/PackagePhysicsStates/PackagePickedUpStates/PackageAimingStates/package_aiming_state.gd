@@ -9,6 +9,7 @@ func enter(host: Node2D) -> void:
 		"throw_line_points",
 	]);
 	
+	host.sounds.play("Aim");
 	host.collection_area.in_simulation_mode = true;
 
 func physics_update(host: Node2D, delta: float):

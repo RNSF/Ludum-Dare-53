@@ -17,8 +17,17 @@ var levels := [
 ];
 var current_level : LevelWorld;
 
+@onready var sounds := $Sounds;
+
 func _ready() -> void:
 	change_level(level_index);
+	sounds.play("Music")
+
+func _process(delta: float) -> void:
+	if(Input.is_action_just_pressed("mute_music")):
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), not AudioServer.is_bus_mute(AudioServer.get_bus_index("Music")));
+	if(Input.is_action_just_pressed("mute_sfx")):
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), not AudioServer.is_bus_mute(AudioServer.get_bus_index("SFX")));
 
 func change_level(new_level_index: int) -> void:
 	if(current_level):
